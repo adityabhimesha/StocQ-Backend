@@ -8,12 +8,40 @@ from .models import User
 import jwt,datetime
 from os import environ
 import json
+import re   
+  
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'  
+  
+def email_valid(email):   
+  
+    if(re.search(regex,email)):   
+        return True 
+    else:   
+        return False
 
+    
 # Create your views here.
 class RegisterView(APIView):
     def post(self, request, format=None):
+        username = request.data['name']
+        email = request.data['email']
+        password = request.data['password']
+
+        if(username == ""):
+            raise AuthenticationFailed('Username Cannot Be Empty')
+
+        if(email == ""):
+            raise AuthenticationFailed('Email Cannot Be Empty')
+
+        if(password == ""):
+            raise AuthenticationFailed('Password Cannot Be Empty')
+
+        if not email_valid(email):
+             raise AuthenticationFailed('Email Is Not Valid!')
+        
         serializer = UserSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        if not serializer.is_valid():
+            raise AuthenticationFailed('User With Email Already Registered!')
         serializer.save()
 
         payload = {
@@ -22,9 +50,10 @@ class RegisterView(APIView):
             'iat' : datetime.datetime.utcnow()
         }
 
-        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256')
         res = Response()
-        res.set_cookie(key='auth', value=token, httponly=True, expires=payload['exp'])
+        res['auth-token'] = token
+        res['Access-Control-Expose-Headers'] = '*'
 
         res.data = {
             "message" : "Register Success!",
@@ -37,6 +66,12 @@ class LoginView(APIView):
     def post(self, request, format=None):
         email = request.data['email']
         password = request.data['password']
+
+        if(email == ""):
+            raise AuthenticationFailed('Email Cannot Be Empty')
+
+        if password == "":
+            raise AuthenticationFailed('Password Cannot Be Empty!')
 
         user = User.objects.filter(email=email).first()
         if user is None:
@@ -51,10 +86,11 @@ class LoginView(APIView):
             'iat' : datetime.datetime.utcnow()
         }
 
-        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256')
         res = Response()
-        res.set_cookie(key='auth', value=token, httponly=True, expires=payload['exp'])
-
+        res['auth-token'] = token
+        res['Access-Control-Expose-Headers'] = '*'
+ 
         res.data = {
             "message" : "Login Success!",
         }
