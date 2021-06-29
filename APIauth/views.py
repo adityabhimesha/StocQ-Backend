@@ -52,8 +52,7 @@ class RegisterView(APIView):
 
         token = jwt.encode(payload, environ['SECRET'], algorithm='HS256')
         res = Response()
-        res['auth-token'] = token
-        res['Access-Control-Expose-Headers'] = '*'
+        res.set_cookie('auth',token, secure=True, httponly=True)
 
         res.data = {
             "message" : "Register Success!",
@@ -86,13 +85,13 @@ class LoginView(APIView):
             'iat' : datetime.datetime.utcnow()
         }
 
-        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256')
+        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256').decode('utf-8')
         res = Response()
-        res['auth-token'] = token
-        res['Access-Control-Expose-Headers'] = '*'
+        res.set_cookie('auth',token, secure=True, httponly=True)
  
         res.data = {
             "message" : "Login Success!",
+            "username" : user.name,
         }
         return res
     
