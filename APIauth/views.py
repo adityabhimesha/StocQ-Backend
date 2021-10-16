@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from jwt import algorithms
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
@@ -50,7 +51,7 @@ class RegisterView(APIView):
             'iat' : datetime.datetime.utcnow()
         }
 
-        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256')
+        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256').decode('utf-8')
         res = Response()
         res.set_cookie('auth',token, secure=True, httponly=True)
 
@@ -114,7 +115,7 @@ class UserView(APIView):
             raise AuthenticationFailed('User Not Authenticated!')
 
         try:
-            payload = jwt.decode(token, environ['SECRET'], algorithm=['HS256'])
+            payload = jwt.decode(token, environ['SECRET'], algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('User Not Authenticated!!!')
 

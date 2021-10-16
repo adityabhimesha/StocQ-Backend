@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',  
     'APIauth',
+    'Backtest',
 ]
 
 MIDDLEWARE = [
