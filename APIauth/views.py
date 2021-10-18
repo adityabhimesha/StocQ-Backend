@@ -51,7 +51,7 @@ class RegisterView(APIView):
             'iat' : datetime.datetime.utcnow()
         }
 
-        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256')
         res = Response()
         res.set_cookie('auth',token, secure=True, httponly=True)
 
@@ -86,7 +86,7 @@ class LoginView(APIView):
             'iat' : datetime.datetime.utcnow()
         }
 
-        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload, environ['SECRET'], algorithm='HS256')
         res = Response()
         res.set_cookie('auth',token, secure=True, httponly=True)
  

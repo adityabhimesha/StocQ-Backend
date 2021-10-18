@@ -1,6 +1,4 @@
-import importlib
 import logging
-import sys
 import numpy as np
 from .utils import *
 from .agents.DQN import *
@@ -32,7 +30,7 @@ def startBacktest(initial_balance, model="DQN_ep10", stock_name='BA_2020'):
     window_size = 10 #model is trained on window size 10, basically 10 prices before predicting next, cant change now.
     action_dict = {0: 'Hold', 1: 'Buy', 2: 'Sell'}
 
-    logging.basicConfig(filename=f'{model_name}_evaluation_{stock_name}.log', filemode='w',
+    logging.basicConfig(filename=f'DQN/logs/{model_name}_evaluation_{stock_name}.log', filemode='w',
                         format='[%(asctime)s.%(msecs)03d %(filename)s:%(lineno)3s] %(message)s', 
                         datefmt='%m/%d/%Y %H:%M:%S', level=logging.INFO)
 
@@ -40,11 +38,14 @@ def startBacktest(initial_balance, model="DQN_ep10", stock_name='BA_2020'):
     stock_prices = stock_close_prices(stock_name)
     trading_period = len(stock_prices) - 1
     state = generate_combined_state(0, window_size, stock_prices, agent.balance, len(agent.inventory))
+    
+
 
     for t in range(1, trading_period + 1):
 
         actions = agent.model.predict(state)[0]
         action = agent.act(state)
+        risk = (1/100) * agent.balance
 
         next_state = generate_combined_state(t, window_size, stock_prices, agent.balance, len(agent.inventory))
         previous_portfolio_value = len(agent.inventory) * stock_prices[t] + agent.balance

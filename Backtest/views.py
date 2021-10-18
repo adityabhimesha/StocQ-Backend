@@ -4,6 +4,6 @@ from DQN.predict import startBacktest
 
 # Create your views here.
 def startBacktestUtil(request):
-    agent = startBacktest(initial_balance=50000)
+    agent = startBacktest(initial_balance=50000, stock_name='INFY_2020')
 
-    return HttpResponse(agent.balance)
+    return HttpResponse(agent.buy_dates)
