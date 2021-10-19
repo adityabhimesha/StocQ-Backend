@@ -1,108 +1,77 @@
-# This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: osx-64
-_tflow_select=2.3.0=mkl
-absl-py=0.12.0=py37hecd8cb5_0
-asgiref=3.3.4=pypi_0
-astor=0.8.1=py37hecd8cb5_0
-astunparse=1.6.3=pypi_0
-beautifulsoup4=4.9.3=pypi_0
-blas=1.0=mkl
-c-ares=1.17.1=h9ed2024_0
-ca-certificates=2021.9.30=hecd8cb5_1
-cachetools=4.2.1=pypi_0
-certifi=2021.10.8=py37hecd8cb5_0
-chardet=4.0.0=pypi_0
-cloudpickle=1.6.0=pypi_0
-coverage=5.5=py37h9ed2024_2
-cycler=0.10.0=py_2
-cython=0.29.22=py37h23ab428_0
-django=3.2.4=pypi_0
-django-cors-headers=3.7.0=pypi_0
-djangorestframework=3.12.4=pypi_0
-empyrical=0.5.5=pypi_0
-freetype=2.10.4=h4cff582_1
-future=0.18.2=pypi_0
-gast=0.2.2=py_0
-google-auth=1.28.1=pypi_0
-google-auth-oauthlib=0.4.4=pypi_0
-google-pasta=0.2.0=py_0
-grpcio=1.36.1=py37h97de6d8_1
-gym=0.18.0=pypi_0
-h5py=2.10.0=py37h0601b69_1
-hdf5=1.10.6=hdbbcd12_0
-idna=2.10=pypi_0
-importlib-metadata=3.10.0=py37hecd8cb5_0
-intel-openmp=2019.4=233
-keras=2.4.3=pypi_0
-keras-applications=1.0.8=py_1
-keras-preprocessing=1.1.0=pypi_0
-keras-rl=0.4.2=pypi_0
-kiwisolver=1.3.1=pypi_0
-libcxx=10.0.0=1
-libffi=3.3=hb1e8313_2
-libgfortran=3.0.1=h93005f0_2
-libpng=1.6.37=h7cec526_2
-libprotobuf=3.14.0=h2842e9f_0
-lxml=4.6.3=pypi_0
-markdown=3.3.4=py37hecd8cb5_0
-matplotlib=3.4.1=pypi_0
-matplotlib-base=3.2.2=py37hddda452_1
-mkl=2019.4=233
-mkl-service=2.3.0=py37h9ed2024_0
-mkl_fft=1.3.0=py37ha059aab_0
-mkl_random=1.1.1=py37h959d312_0
-mplfinance=0.12.7a17=pyhd8ed1ab_0
-msgpack=1.0.2=pypi_0
-ncurses=6.2=h0a44026_1
-numpy=1.18.5=pypi_0
-oauthlib=3.1.0=pypi_0
-openssl=1.1.1l=h9ed2024_0
-opt_einsum=3.1.0=py_0
-pandas=1.2.4=pypi_0
-pandas-datareader=0.9.0=pypi_0
-patsy=0.5.1=pypi_0
-pillow=7.2.0=pypi_0
-pip=21.0.1=py37hecd8cb5_0
-protobuf=3.14.0=py37h23ab428_1
-psycopg2-binary=2.9.1=pypi_0
-pyasn1=0.4.8=pypi_0
-pyasn1-modules=0.2.8=pypi_0
-pyglet=1.5.0=pypi_0
-pyjwt=2.1.0=pypi_0
-pyparsing=2.4.7=pyh9f0ad1d_0
-python=3.7.10=h88f2d9e_0
-python-dateutil=2.8.1=py_0
-python-dotenv=0.18.0=pypi_0
-python_abi=3.7=2_cp37m
-pytz=2021.1=pyhd8ed1ab_0
-pyyaml=5.4.1=pypi_0
-readline=8.1=h9ed2024_0
-requests=2.25.1=pypi_0
-requests-oauthlib=1.3.0=pypi_0
-rsa=4.7.2=pypi_0
-scipy=1.4.1=pypi_0
-setuptools=52.0.0=py37hecd8cb5_0
-six=1.15.0=py37hecd8cb5_0
-soupsieve=2.2.1=pypi_0
-sqlite=3.35.4=hce871da_0
-sqlparse=0.4.1=py_0
-statsmodels=0.12.2=pypi_0
-tensorboard=2.1.1=pypi_0
-tensorboard-plugin-wit=1.8.0=pypi_0
-tensorflow=2.1.2=pypi_0
-tensorflow-base=2.0.0=mkl_py37h66b1bf0_0
-tensorflow-estimator=2.1.0=pypi_0
-termcolor=1.1.0=py37hecd8cb5_1
-tk=8.6.10=hb0a8c7a_0
-tornado=6.1=py37hf967b71_1
-typing_extensions=3.7.4.3=pyha847dfd_0
-tzdata=2020f=h52ac0ba_0
-urllib3=1.26.4=pypi_0
-werkzeug=1.0.1=pyhd3eb1b0_0
-wheel=0.36.2=pyhd3eb1b0_0
-wrapt=1.12.1=py37h1de35cc_1
-xz=5.2.5=h1de35cc_0
-yahoofinancials=1.5=pypi_0
-zipp=3.4.1=pyhd3eb1b0_0
-zlib=1.2.11=h1de35cc_3
+absl-py @ file:///opt/concourse/worker/volumes/live/369745d3-6991-42a3-71cb-795aa3d79471/volume/absl-py_1615411186320/work
+asgiref==3.3.4
+astor==0.8.1
+astunparse==1.6.3
+beautifulsoup4==4.9.3
+cachetools==4.2.1
+certifi==2021.10.8
+chardet==4.0.0
+cloudpickle==1.6.0
+coverage @ file:///opt/concourse/worker/volumes/live/4f1a5e30-f675-4496-6570-bc6669a34f2a/volume/coverage_1614614860186/work
+cycler==0.10.0
+Cython @ file:///opt/concourse/worker/volumes/live/55fb26d1-72e7-437a-7d3f-9637af0c7012/volume/cython_1614014833740/work
+Django==3.2.4
+django-cors-headers==3.7.0
+djangorestframework==3.12.4
+empyrical==0.5.5
+future==0.18.2
+gast==0.2.2
+google-auth==1.28.1
+google-auth-oauthlib==0.4.4
+google-pasta==0.2.0
+grpcio @ file:///opt/concourse/worker/volumes/live/4f7ebd3c-7c5e-48f7-6ff5-de127acdc0d8/volume/grpcio_1614884166576/work
+gym==0.18.0
+h5py @ file:///opt/concourse/worker/volumes/live/98bee3fd-2687-4017-5421-d742d1f18c35/volume/h5py_1593454156895/work
+idna==2.10
+importlib-metadata @ file:///opt/concourse/worker/volumes/live/4e25a0be-45cc-4b73-4314-4604f00e30a4/volume/importlib-metadata_1617877365451/work
+Keras==2.4.3
+Keras-Applications==1.0.8
+Keras-Preprocessing==1.1.0
+keras-rl==0.4.2
+kiwisolver==1.3.1
+lxml==4.6.3
+Markdown @ file:///opt/concourse/worker/volumes/live/255f8945-2411-4469-7c82-a749af3aef33/volume/markdown_1614363822772/work
+matplotlib==3.4.1
+mkl-fft==1.3.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+mplfinance @ file:///home/conda/feedstock_root/build_artifacts/mplfinance_1619183349092/work
+msgpack==1.0.2
+numpy==1.18.5
+oauthlib==3.1.0
+opt-einsum==3.1.0
+pandas==1.2.4
+pandas-datareader==0.9.0
+patsy==0.5.1
+Pillow==7.2.0
+protobuf==3.14.0
+psycopg2-binary==2.9.1
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pyglet==1.5.0
+PyJWT==2.1.0
+pyparsing==2.4.7
+python-dateutil==2.8.1
+python-dotenv==0.18.0
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1612179539967/work
+PyYAML==5.4.1
+requests==2.25.1
+requests-oauthlib==1.3.0
+rsa==4.7.2
+scipy @ file:///opt/concourse/worker/volumes/live/cd12a34b-67bb-4e81-5e11-d0d209d4b37d/volume/scipy_1616703203371/work
+six @ file:///opt/concourse/worker/volumes/live/f983ba11-c9fe-4dff-7ce7-d89b95b09771/volume/six_1605205318156/work
+soupsieve==2.2.1
+sqlparse @ file:///tmp/build/80754af9/sqlparse_1602184451250/work
+statsmodels==0.12.2
+tensorboard==2.1.1
+tensorboard-plugin-wit==1.8.0
+tensorflow==2.1.2
+tensorflow-estimator==2.1.0
+termcolor==1.1.0
+tornado @ file:///Users/runner/miniforge3/conda-bld/tornado_1610094698292/work
+typing-extensions @ file:///home/ktietz/src/ci_mi/typing_extensions_1612808209620/work
+urllib3==1.26.4
+Werkzeug @ file:///home/ktietz/src/ci/werkzeug_1611932622770/work
+wrapt==1.12.1
+yahoofinancials==1.5
+zipp @ file:///tmp/build/80754af9/zipp_1615904174917/work
