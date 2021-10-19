@@ -44,6 +44,8 @@ class User(AbstractUser):
     email = models.CharField(max_length=255,unique=True, blank=False,)
     password = models.CharField(max_length=512,blank=False,)
 
+    balance = models.IntegerField(default=0, null=False)
+
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False) 

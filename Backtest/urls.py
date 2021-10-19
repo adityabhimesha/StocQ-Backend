@@ -1,5 +1,8 @@
-from django.urls import path,include
-from .views import startBacktestUtil
+from django.urls import path
+from .views import startBacktestUtil, OHLCData, deposit, withdraw
 urlpatterns = [
-    path('start/', startBacktestUtil)
+    path('start/', startBacktestUtil),
+    path('ohlc/', OHLCData),
+    path('deposit/', deposit),
+    path('withdraw/', withdraw),
 ]   
