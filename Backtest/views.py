@@ -71,6 +71,28 @@ def OHLCData(request):
 
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
+def getBalance(request):
+    token = request.COOKIES.get('auth')
+    if not token:
+        raise AuthenticationFailed('User Not Authenticated!')
+
+    try:
+        payload = jwt.decode(token, environ['SECRET'], algorithms=['HS256'])
+    except jwt.ExpiredSignatureError:
+        raise AuthenticationFailed('User Not Authenticated!!!')
+
+    user_id = payload['id']
+    user = User.objects.filter(pk=user_id).first()
+    if user is None:
+        raise AuthenticationFailed('User Does Not Exist!') 
+
+    payload = {
+        "username" : user.name,
+        "balance" : user.balance,
+    }
+
+    return HttpResponse(json.dumps(payload), content_type="application/json")
+    
 
 def deposit(request):
     token = request.COOKIES.get('auth')
@@ -90,7 +112,7 @@ def deposit(request):
     
     amount = int(request.GET['amount'])
     if(amount <= 0):
-        raise AuthenticationFailed('Amount should be greater than 0') 
+        return HttpResponse('Amount should be greater than 0',status=500, content_type="application/json")
 
     user.balance += amount
     user.save()
@@ -120,10 +142,10 @@ def withdraw(request):
     
     amount = int(request.GET['amount'])
     if(amount <= 0):
-        raise AuthenticationFailed('Amount should be greater than 0')
+        return HttpResponse('Amount should be greater than 0',status=500, content_type="application/json")
 
     if(amount > user.balance):
-        raise AuthenticationFailed('Amount cannot be greater than your balance')
+        return HttpResponse('Amount cannot be greater than your balance',status=500, content_type="application/json")
 
     user.balance -= amount
     user.save()
