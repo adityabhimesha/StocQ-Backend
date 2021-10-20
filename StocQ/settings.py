@@ -35,7 +35,7 @@ SECRET_KEY = os.environ['DJANGO_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['chances-evolution-logitech-hats.trycloudflare.com', 'localhost']
 
 
 # Application definition

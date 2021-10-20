@@ -73,13 +73,9 @@ def OHLCData(request):
 
 def getBalance(request):
     token = request.COOKIES.get('auth')
-    if not token:
-        raise AuthenticationFailed('User Not Authenticated!')
 
-    try:
-        payload = jwt.decode(token, environ['SECRET'], algorithms=['HS256'])
-    except jwt.ExpiredSignatureError:
-        raise AuthenticationFailed('User Not Authenticated!!!')
+
+    payload = jwt.decode(token, environ['SECRET'], algorithms=['HS256'])
 
     user_id = payload['id']
     user = User.objects.filter(pk=user_id).first()
