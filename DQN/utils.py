@@ -14,6 +14,7 @@ class Portfolio:
         self.portfolio_values = [balance]
         self.buy_dates = []
         self.sell_dates = []
+        self.profits = []
 
     def reset_portfolio(self):
         self.balance = self.initial_portfolio_value

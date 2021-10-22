@@ -31,10 +31,15 @@ def startBacktestUtil(request):
         payload = {
             "message" : "Please Pick a Stock!"
         }
-        return HttpResponse(json.dumps(payload), content_type="application/json")
+        return HttpResponse(json.dumps(payload),status=400, content_type="application/json")
 
 
     agent = startBacktest(initial_balance=user.balance, stock_name=key)
+
+    user.balance = agent.balance
+    user.save()
+
+
     payload = {
         "portfolio_values" : agent.portfolio_values,
         "return_rates" : agent.return_rates,
@@ -43,8 +48,9 @@ def startBacktestUtil(request):
         "initial_portfolio_value" : agent.initial_portfolio_value,
         "balance" : agent.balance,
         "inventory" : agent.inventory,
+        "profits" : agent.profits,
     }
-
+    
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
 
