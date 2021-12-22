@@ -9,7 +9,7 @@ from utils import *
 
 parser = argparse.ArgumentParser(description='command line options')
 parser.add_argument('--model_name', action="store", dest="model_name", default='DQN', help="model name")
-parser.add_argument('--stock_name', action="store", dest="stock_name", default='^GSPC_2018', help="stock name")
+parser.add_argument('--stock_name', action="store", dest="stock_name", default='INFY_2020', help="stock name")
 parser.add_argument('--window_size', action="store", dest="window_size", default=5, type=int, help="span (days) of observation")
 parser.add_argument('--num_episode', action="store", dest="num_episode", default=1, type=int, help='episode number')
 parser.add_argument('--initial_balance', action="store", dest="initial_balance", default=50000, type=int, help='initial balance')
@@ -102,7 +102,7 @@ for e in range(1, num_episode + 1):
             if isinstance(execution_result, tuple): # if execution_result is 'Hold'
                 actions = execution_result[1]
                 execution_result = execution_result[0]
-            logging.info(execution_result)                
+            logging.info(execution_result) 
 
         # calculate reward
         current_portfolio_value = len(agent.inventory) * stock_prices[t] + agent.balance

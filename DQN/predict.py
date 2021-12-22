@@ -39,7 +39,7 @@ def startBacktest(initial_balance, model="DQN_ep10", stock_name='BA_2020'):
     model_to_load = model
     model_name = model_to_load.split('_')[0]
 
-    window_size = 10 #model is trained on window size 10, basically 10 prices before predicting next, cant change now.
+    window_size = 10 #model is trained on window size 10, basically 10 prices before predicting next.
     action_dict = {0: 'Hold', 1: 'Buy', 2: 'Sell'}
 
     logging.basicConfig(filename=f'DQN/logs/{model_name}_evaluation_{stock_name}.log', filemode='w',
@@ -51,7 +51,7 @@ def startBacktest(initial_balance, model="DQN_ep10", stock_name='BA_2020'):
     trading_period = len(stock_prices) - 1
     state = generate_combined_state(0, window_size, stock_prices, agent.balance, len(agent.inventory))
     
-    risk = (5/100) * agent.balance
+    risk = (10/100) * agent.balance
     maxDD = (50/100) * agent.balance
 
     for t in range(1, trading_period + 1):
@@ -80,7 +80,6 @@ def startBacktest(initial_balance, model="DQN_ep10", stock_name='BA_2020'):
         agent.profits.append(profit)
         state = next_state
 
-        
 
     if len(agent.inventory) > 0:
         for stock in agent.inventory:

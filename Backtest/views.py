@@ -7,6 +7,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from APIauth.models import User
 from os import environ
 import jwt
+from DQN.utils import maximum_drawdown
 
 # Create your views here.
 def startBacktestUtil(request):
@@ -39,6 +40,8 @@ def startBacktestUtil(request):
     user.balance = agent.balance
     user.save()
 
+    maxDD = maximum_drawdown((agent.portfolio_values) * 100)
+
 
     payload = {
         "portfolio_values" : agent.portfolio_values,
@@ -49,6 +52,7 @@ def startBacktestUtil(request):
         "balance" : agent.balance,
         "inventory" : agent.inventory,
         "profits" : agent.profits,
+        "maxDD" : maxDD
     }
     
     return HttpResponse(json.dumps(payload), content_type="application/json")
